@@ -55,7 +55,7 @@ class OnlineSalesRegisterCollector:
             if key in self.name_items and value == 20:
                 twenty_percent_tax.append(key)
                 total.append(self.__item_price[key])
-        if len(total) > 10:
+        if self.__number_items > 10:
             return sum(total)*0.9 * 0.2
         else:
             return sum(total)*0.2
@@ -67,7 +67,7 @@ class OnlineSalesRegisterCollector:
             if key in self.name_items and value == 10:
                 ten_percent_tax.append(key)
                 total.append(self.__item_price[key])
-        if len(total) > 10:
+        if self.__number_items > 10:
             return sum(total)*0.9 * 0.1
         else:
             return sum(total)*0.1
@@ -87,7 +87,6 @@ class OnlineSalesRegisterCollector:
         except ValueError as error:
             raise error
         
-        
     @staticmethod
     def get_date_and_time():
         date_and_time = []
@@ -96,6 +95,3 @@ class OnlineSalesRegisterCollector:
         for i in date:
             date_and_time.append(f'{i[0]}: {i[1](now)}')
         return date_and_time
-
-register = OnlineSalesRegisterCollector()
-print(register.get_date_and_time())
